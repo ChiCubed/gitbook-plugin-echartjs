@@ -64,7 +64,7 @@ module.exports = {
     echartjs: {
       process: function(block) {
         let chartID = 'echartjs-'+countGraph++;
-        var config = readConfig(block.body());
+        var config = parseConfig(block.body());
         let width = block.kwargs.width;
         let height = block.kwargs.height;
         
