@@ -32,6 +32,6 @@ To draw an equation, use:
 {% endechartjs %}
 ```
 
-(Note the `type="equation"` in the block.) This will create a chart with type 'line'. Any of the normal Chart.js options can be used within the 'options' object.
+(Note the `type="equation"` in the block.) This will create a chart with type 'scatter'. Any of the normal Chart.js options can be used within the 'options' object.
 
 Start, stop and step refer to the distance along the x-axis between each point that is drawn by the plugin. You can configure the scales using the 'options', as described [here](http://www.chartjs.org/docs/latest/axes/cartesian/linear.html).

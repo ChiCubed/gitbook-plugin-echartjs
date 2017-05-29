@@ -48,8 +48,16 @@ function processEquation(config) {
   // chart.js configration.
   
   var final = {
-    type: 'line',
-    data: []
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: 'y = ' + config.equation,
+        data: [],
+        backgroundColor: 'rgba(0,0,0,0)',
+        borderColor: 'rgba(0,0,0,1)',
+        fill: false
+      }]
+    }
   };
   final.options = config.options;
   
@@ -60,10 +68,10 @@ function processEquation(config) {
   
   var expr = parser.parse(equation);
   for (var xpos = start; xpos <= stop; xpos += step) {
-    final.data.push({x: xpos, y: expr.evaluate({x : xpos})});
+    final.data.datasets[0].data.push({x: xpos, y: expr.evaluate({x : xpos})});
   }
   
-  return final
+  return final;
 }
 
 module.exports = {
