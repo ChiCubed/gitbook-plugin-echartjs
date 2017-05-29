@@ -1,3 +1,5 @@
+'use strict';
+
 var Parser = require('expr-eval').Parser;
 var parser = new Parser();
 
