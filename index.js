@@ -25,12 +25,13 @@ function parseConfig(config) {
 }
 
 function genHTML(chartID, config, width, height) {
-  let attr = '';
-  attr += ( width != null ?  ' width=' +  width: '');
-  attr += (height != null ? ' height=' + height: '');
+  var divstyle = ' style="';
+  divstyle += ( width != null ?  ' width:' +  width + ';' : '');
+  divstyle += (height != null ? ' height:' + height + ';' : '');
+  divstyle += '"';
   
-  return '<div class="echartjs-wrapper">' +
-             '<canvas id="' + chartID + '" class="chartjs"' + attr + '></canvas>' +
+  return '<div class="echartjs-wrapper"' + divstyle + '>' +
+             '<canvas id="' + chartID + '" class="chartjs"></canvas>' +
              '<script>' +
                  'new Chart(' +
                      'document.getElementById("' + chartID + '"),' +
@@ -74,17 +75,12 @@ module.exports = {
       process: function(block) {
         let chartID = 'echartjs-'+countGraph++;
         var config = parseConfig(block.body);
-        let width = block.kwargs.width || 1540;
-        let height = block.kwargs.height || 770;
+        let width = block.kwargs.width;
+        let height = block.kwargs.height;
         
-        if (block.kwargs.type !== undefined &&
-            block.kwargs.type == "equation") {
+        if (block.kwargs.type == "equation") {
           config = processEquation(config);
         }
-        
-        // Force chartjs to use the given
-        // width and height
-        config.maintainAspectRatio = false;
         
         return genHTML(chartID, config, width, height);
       }

@@ -7,7 +7,7 @@ However, this plugin is extended: an equation can be given, which is evaluated b
 The syntax is as follows for using normal Chart.js:
 
 ```
-{% echartjs width="200", height="100", type="chart" %}
+{% echartjs width="200px", height="100px", type="chart" %}
 {
     ...
 }
@@ -19,7 +19,7 @@ Put the Chart.js configuration in the object between the two tags. Width and hei
 To draw an equation, use:
 
 ```
-{% echartjs width="200", height="100", type="equation" %}
+{% echartjs width="200px", height="100px", type="equation" %}
 {
     "equation": "x^2",
     "start": 0,
