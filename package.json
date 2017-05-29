@@ -11,7 +11,7 @@
   },
   "__dependencies__": {
     "chart.js": "^2.6.0",
-    "chartjs-plugin-deferred": "^0.3.0",
+    "chartjs-plugin-deferred": "^0.3.0"
   },
   "dependencies": {
     "expr-eval": "^1.0.0"
