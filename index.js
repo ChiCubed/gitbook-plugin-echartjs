@@ -26,8 +26,8 @@ function parseConfig(config) {
 
 function genHTML(chartID, config, width, height) {
   let attr = '';
-  attr += ( width != null ?  ' width="' +  width + '"': '');
-  attr += (height != null ? ' height="' + height + '"': '');
+  attr += ( width != null ?  ' width=' +  width: '');
+  attr += (height != null ? ' height=' + height: '');
   
   return '<div class="echartjs-wrapper">' +
              '<canvas id="' + chartID + '" class="chartjs"' + attr + '></canvas>' +
@@ -74,13 +74,17 @@ module.exports = {
       process: function(block) {
         let chartID = 'echartjs-'+countGraph++;
         var config = parseConfig(block.body);
-        let width = block.kwargs.width;
-        let height = block.kwargs.height;
+        let width = block.kwargs.width || 1540;
+        let height = block.kwargs.height || 770;
         
         if (block.kwargs.type !== undefined &&
             block.kwargs.type == "equation") {
           config = processEquation(config);
         }
+        
+        // Force chartjs to use the given
+        // width and height
+        config.maintainAspectRation = false;
         
         return genHTML(chartID, config, width, height);
       }
