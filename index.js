@@ -3,6 +3,13 @@ var parser = new Parser();
 
 var countGraph = 0;
 
+let css = '.echartjs-wrapper canvas {' +
+          '    -webkit-user-select: none;' +
+          '    -moz-user-select: none;' +
+          '    -ms-user-select: none;' +
+          '    user-select: none;' +
+          '}'
+
 function parseConfig(config) {
   var final = null;
   
@@ -21,7 +28,7 @@ function genHTML(chartID, config, width, height) {
   attr += (height != null ? ' height="' + height + '"': '');
   
   return '<div class="echartjs-wrapper">' +
-             '<canvas id="' + chartID + '" class="chartjs"' + attr + '>' +
+             '<canvas id="' + chartID + '" class="chartjs"' + attr + '></canvas>' +
              '<script>' +
                  'new Chart(' +
                      'document.getElementById("' + chartID + '"),' +
@@ -57,14 +64,14 @@ function processEquation(config) {
 }
 
 module.exports = {
-  book: {css: ['style.css']},
-  ebook: {css: ['style.css']},
+  book: {css: ['style.css'], assets: './assets'},
+  ebook: {css: ['style.css'], assets: './assets'},
   
   blocks: {
     echartjs: {
       process: function(block) {
         let chartID = 'echartjs-'+countGraph++;
-        var config = parseConfig(block.body());
+        var config = parseConfig(block.body);
         let width = block.kwargs.width;
         let height = block.kwargs.height;
         

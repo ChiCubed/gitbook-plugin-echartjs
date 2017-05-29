@@ -21,11 +21,11 @@ To draw an equation, use:
 ```
 {% echartjs width="200", height="100", type="equation" %}
 {
-    equation: "x^2",
-    start: 0,
-    stop: 100,
-    step: 10,
-    options: {
+    "equation": "x^2",
+    "start": 0,
+    "stop": 100,
+    "step": 10,
+    "options": {
         ...
     }
 }
