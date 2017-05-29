@@ -10,8 +10,10 @@
     "gitbook": ">=3.0.0"
   },
   "dependencies": {
-    "chart.js": ">=2.5.0"
-  }
+    "chart.js": "^2.5.0",
+    "chartjs-plugin-deferred": "^0.2.0",
+    "expr-eval": "^1.0.0"
+  },
   "keywords": [
     "gitbook",
     "chart",

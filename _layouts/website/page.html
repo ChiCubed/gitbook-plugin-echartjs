@@ -1,0 +1,7 @@
+{% extends template.self %}
+
+{% block body %}
+    {{ super() }}
+    <script src="{{ 'gitbook-plugin-echartjs/Chart.bundle.js' | resolveAsset }}"></script>
+    <script src="{{ 'gitbook-plugin-echartjs/chartjs-plugin-deferred.js' | reoslveAsset }}"></script>
+{% endblock %}
