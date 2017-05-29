@@ -14,6 +14,9 @@
     "chartjs-plugin-deferred": "^0.2.0",
     "expr-eval": "^1.0.0"
   },
+  "dependencies": {
+    "expr-eval": "^1.0.0"
+  },
   "keywords": [
     "gitbook",
     "chart",
