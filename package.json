@@ -1,4 +1,4 @@
-{  
+{
   "name": "gitbook-plugin-echartjs",
   "version": "0.0.1",
   "description": "An extended Chart.js plugin for GitBook.",
@@ -8,6 +8,10 @@
   },
   "engines": {
     "gitbook": ">=3.0.0"
+  },
+  "__dependencies__": {
+    "chart.js": "^2.6.0",
+    "chartjs-plugin-deferred": "^0.3.0",
   },
   "dependencies": {
     "expr-eval": "^1.0.0"
