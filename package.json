@@ -1,0 +1,25 @@
+{
+  "name": "gitbook-plugin-echartjs",
+  "version": "0.0.1",
+  "description": "An extended Chart.js plugin for GitBook.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiCubed/gitbook-plugin-echartjs.git"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0"
+  },
+  "dependencies": {
+    "chart.js": ">=2.5.0"
+  }
+  "keywords": [
+    "gitbook",
+    "chart",
+    "graph"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ChiCubed/gitbook-plugin-echartjs/issues"
+  },
+  "homepage": "https://github.com/ChiCubed/gitbook-plugin-echartjs#readme"
+}
