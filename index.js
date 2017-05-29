@@ -84,7 +84,7 @@ module.exports = {
         
         // Force chartjs to use the given
         // width and height
-        config.maintainAspectRation = false;
+        config.maintainAspectRatio = false;
         
         return genHTML(chartID, config, width, height);
       }
