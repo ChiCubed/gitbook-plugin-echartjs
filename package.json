@@ -9,11 +9,6 @@
   "engines": {
     "gitbook": ">=3.0.0"
   },
-  "______dependencies______": {
-    "chart.js": "^2.5.0",
-    "chartjs-plugin-deferred": "^0.2.0",
-    "expr-eval": "^1.0.0"
-  },
   "dependencies": {
     "expr-eval": "^1.0.0"
   },
