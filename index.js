@@ -30,14 +30,51 @@ function genHTML(chartID, config, width, height) {
   divstyle += (height != null ? ' height:' + height + ';' : '');
   divstyle += '"';
   
-  return '<div class="echartjs-wrapper"' + divstyle + '>' +
-             '<canvas id="' + chartID + '" class="chartjs"></canvas>' +
-             '<script>' +
-                 'new Chart(' +
-                     'document.getElementById("' + chartID + '"),' +
-                     JSON.stringify(config) + ');' +
-             '</script>' +
-         '</div>';
+  
+  var s = '';
+  
+  
+  // In PDFs and other ebook formats
+  // the charts won't show up.
+  // So, convert them to images.
+  // (I don't think that the scripts will
+  //  actually be executed during PDF generation,
+  //  so maybe just convert all the graphs to images
+  //  like this.)
+  if (this.output.name != "website" && this.output.name != "json") {
+    s += '<img id="' + chartID + '-img" src=""/>';
+  }
+  
+  
+  s +=   '<div class="echartjs-wrapper"' + divstyle + '>' +
+              '<canvas id="' + chartID + '" class="chartjs"></canvas>' +
+              '<script>' +
+                  'var config = ' + JSON.stringify(config) + ';' +
+                  'var canvas = document.getElementById("' + chartID + '");'
+  
+  if (this.output.name != "website" && this.output.name != "json") {
+    // use canvas width and height to choose an image size
+    s +=          'function renderImg() {' +
+                      'var img = document.getElementById("' + chartID + '-img");' +
+                      'img.style.width = canvas.width;' +
+                      'img.style.height = canvas.height;' +
+                      'img.src = canvas.toDataURL("image/png");' +
+                  '}' +
+                  'if (config.options == null) { config.options = {}; }' +
+                  'if (config.options.animation == null) { config.options.animation = {}; }' +
+                  'config.options.animation.onComplete = renderImg;' + 
+                  'config.options.animation.duration = 0;';
+    // We set the duration to 0 above so that the image
+    // renders immediately.
+  }
+  
+  
+  
+  s +=            'new Chart(canvas, config);' +
+              '</script>' +
+          '</div>';
+          
+  return s;
 }
 
 
