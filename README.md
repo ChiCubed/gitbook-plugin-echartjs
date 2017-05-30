@@ -35,3 +35,26 @@ To draw an equation, use:
 (Note the `type="equation"` in the block.) This will create a chart with type 'scatter'. Any of the normal Chart.js options can be used within the 'options' object.
 
 Start, stop and step refer to the distance along the x-axis between each point that is drawn by the plugin. You can configure the scales using the 'options', as described [here](http://www.chartjs.org/docs/latest/axes/cartesian/linear.html).
+
+### Important Note
+
+The plugin will not render to PDF or other eBook formats since it uses an HTML5 canvas for rendering.
+
+You can however create an image from the charts using this plugin, which will show up in all formats.
+
+Set the 'renderPNG' option in the pluginsConfig in the `book.json`. This will generate an image above every chart in the webpage (when it is created as a webpage.) You can then save these images and replace the charts with the images, to allow it to render to PDF.
+
+Note that a script is used to render the image, and therefore this plugin will not work with PDFs; you _must_ use images.
+
+Sample `book.json`:
+
+```
+{
+  "plugins": ["echartjs@git+https://github.com/ChiCubed/gitbook-plugin-echartjs"],
+  "pluginsConfig": {
+    "echartjs": {
+      "renderPNG": true
+    }
+  }
+}
+```

@@ -25,5 +25,14 @@
   "bugs": {
     "url": "https://github.com/ChiCubed/gitbook-plugin-echartjs/issues"
   },
-  "homepage": "https://github.com/ChiCubed/gitbook-plugin-echartjs#readme"
+  "homepage": "https://github.com/ChiCubed/gitbook-plugin-echartjs#readme",
+  "gitbook": {
+    "properties": {
+      "renderPNG": {
+        "type": "boolean",
+        "title": "Create PNG images from charts",
+        "default": false
+      }
+    }
+  }
 }

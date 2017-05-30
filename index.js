@@ -33,6 +33,8 @@ function genHTML(chartID, config, width, height) {
   
   var s = '';
   
+  var renderPNG = true;//this.config.get('pluginsConfig.echartjs.renderPNG', false);
+  
   
   // In PDFs and other ebook formats
   // the charts won't show up.
@@ -41,7 +43,7 @@ function genHTML(chartID, config, width, height) {
   //  actually be executed during PDF generation,
   //  so maybe just convert all the graphs to images
   //  like this.)
-  if (this.output.name != "website" && this.output.name != "json") {
+  if (renderPNG) {
     s += '<img id="' + chartID + '-img" src=""/>';
   }
   
@@ -52,7 +54,7 @@ function genHTML(chartID, config, width, height) {
                   'var config = ' + JSON.stringify(config) + ';' +
                   'var canvas = document.getElementById("' + chartID + '");'
   
-  if (this.output.name != "website" && this.output.name != "json") {
+  if (renderPNG) {
     // use canvas width and height to choose an image size
     s +=          'function renderImg() {' +
                       'var img = document.getElementById("' + chartID + '-img");' +
