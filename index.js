@@ -51,20 +51,20 @@ function genHTML(chartID, config, width, height) {
   s +=   '<div class="echartjs-wrapper"' + divstyle + '>' +
               '<canvas id="' + chartID + '" class="chartjs"></canvas>' +
               '<script>' +
-                  'var config = ' + JSON.stringify(config) + ';' +
-                  'var canvas = document.getElementById("' + chartID + '");'
+                  'var config = ' + JSON.stringify(config) + ';'
   
   if (renderPNG) {
     // use canvas width and height to choose an image size
-    s +=          'function renderImg() {' +
+    s +=          'function _renderImg'+chartID.replace('-','')+'() {' +
+                      'var thiscanvas = document.getElementById("' + chartID + '");' +
                       'var img = document.getElementById("' + chartID + '-img");' +
-                      'img.style.width = canvas.width;' +
-                      'img.style.height = canvas.height;' +
-                      'img.src = canvas.toDataURL("image/png");' +
+                      'img.style.width = thiscanvas.width;' +
+                      'img.style.height = thiscanvas.height;' +
+                      'img.src = thiscanvas.toDataURL("image/png");' +
                   '}' +
                   'if (config.options == null) { config.options = {}; }' +
                   'if (config.options.animation == null) { config.options.animation = {}; }' +
-                  'config.options.animation.onComplete = renderImg;' + 
+                  'config.options.animation.onComplete = _renderImg'+chartID.replace('-','')+';' + 
                   'config.options.animation.duration = 0;';
     // We set the duration to 0 above so that the image
     // renders immediately.
@@ -72,7 +72,7 @@ function genHTML(chartID, config, width, height) {
   
   
   
-  s +=            'new Chart(canvas, config);' +
+  s +=            'new Chart(document.getElementById("' + chartID + '"),config);' +
               '</script>' +
           '</div>';
           
