@@ -14,7 +14,13 @@
     "chartjs-plugin-deferred": "^0.3.0"
   },
   "dependencies": {
+    "chart.js": "^2.5.0",
+    "chartjs-plugin-deferred": "^0.2.0",
+    "copyfiles": "^1.0.0",
     "expr-eval": "^1.0.0"
+  },
+  "scripts": {
+    "prepublish": "copyfiles -f node_modules/chart*/dist/*.js assets/"
   },
   "keywords": [
     "gitbook",

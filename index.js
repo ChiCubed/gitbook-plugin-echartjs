@@ -111,8 +111,14 @@ function processEquation(config) {
   } else if (final.options.elements.point == null) {
     final.options.elements.point = {radius: 0, hitRadius: 0, hoverRadius: 0};
   } else {
-    if (final.options.elements.point.radius == undefined) {
-      
+    if (final.options.elements.point.radius === undefined) {
+      final.options.element.point.radius = 0;
+    }
+    if (final.options.elements.point.hitRadius === undefined) {
+      final.options.element.point.hitRadius = 0;
+    }
+    if (final.options.elements.point.hoverRadius === undefined) {
+      final.options.element.point.hoverRadius = 0;
     }
   }
   
